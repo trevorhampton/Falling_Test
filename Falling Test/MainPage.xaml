@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="Falling_Test.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Falling_Test"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Button Content="Start" Height="72" HorizontalAlignment="Left" Margin="20,10,0,0" Name="startButton" VerticalAlignment="Top" Width="160" Click="startButton_Click" />
+        <Button Content="Stop" Height="72" HorizontalAlignment="Right" Margin="0,10,20,0" Name="stopButton" VerticalAlignment="Top" Width="160" Click="stopButton_Click"/>
+        <TextBlock x:Name="distanceText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Margin="20,278,0,0" Height="22" Width="160"/>
+        <TextBlock x:Name="velocityText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Margin="220,278,0,0" Width="160" Height="22"/>
+        <TextBlock Height="30" HorizontalAlignment="Center" Margin="6,571,6,0" Name="statusTextBlock" Text="TextBlock" VerticalAlignment="Top" Width="444" />
+        <Button x:Name="testBtn" Content="Test Button" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="139,125,0,0" Click="testBtn_Click"/>
+
+    </Grid>
+</Page>
