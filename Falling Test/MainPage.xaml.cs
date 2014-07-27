@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.Devices.Sensors;
+using Microsoft.Xna.Framework;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -47,28 +48,23 @@ namespace Falling_Test
 
         private void startButton_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (accelerometer == null)
             {
-                if (accelerometer == null)
-                {
-                    accelerometer = new Accelerometer();
-                }
-            }
-            catch
-            {
+                accelerometer = new Accelerometer();
+                accelerometer.TimeBetweenUpdates = TimeSpan.FromMilliseconds(20);
+                //accelerometer.CurrentValueChanged +=
+                //    new EventHandler<SensorReadingEventArgs<AccelerometerReading>>(accelerometer_CurrentValueChanged);
 
             }
-
             try
             {
-                statusTextBlock.Text = "Starting accelerometer.";
+                statusTextBlock.Text = "Starting accelerometer";
                 accelerometer.Start();
             }
-            catch (InvalidOperationException)
+            catch (InvalidOperationException ex)
             {
                 statusTextBlock.Text = "Unable to start accelerometer.";
             }
-            
         }
 
         private void stopButton_Click(object sender, RoutedEventArgs e)
@@ -79,6 +75,16 @@ namespace Falling_Test
         private void testBtn_Click(object sender, RoutedEventArgs e)
         {
             distanceText.Text = accelerometer.CurrentValue.ToString();
+        }
+
+        void accelerometer_CurrentValueChanged(AccelerometerReading accelerometerReading)
+        {
+            statusTextBlock.Text = "Getting data.";
+
+            Vector3 acceleration = accelerometerReading.Acceleration;
+
+            velocityText.Text = "Acceleration Output: " + acceleration.Z.ToString("0.00");
+            
         }
     }
 }
